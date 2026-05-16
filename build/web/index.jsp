@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Sistema Delivery</h1>
-        <a href="login.jsp"></a>
+        <a href="login.jsp">Login</a>
         <a href="registro.jsp">Registro</a>
     </body>
 </html>
