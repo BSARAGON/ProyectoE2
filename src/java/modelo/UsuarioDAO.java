@@ -8,8 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import util.Conexion;
+import java.util.ArrayList;
 
 public class UsuarioDAO {
+    
+    public static TablaHashGen<Integer, Usuario> tablaUsuarios = new TablaHashGen<>(20);
+    
+    public static ArbolMulticamino arbol = new ArbolMulticamino();
     
     public boolean registrar(Usuario u) 
     {
@@ -27,6 +32,8 @@ public class UsuarioDAO {
             ps.setString(5, u.getRol());
             
             ps.executeUpdate();
+            
+            tablaUsuarios.insertar(u.getId(), u);
 
             return true;
         } 

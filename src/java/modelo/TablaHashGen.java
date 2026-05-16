@@ -35,6 +35,11 @@ public class TablaHashGen<K, V>
         return valor % tamanio;
     }
     
+    public int obtenerPosicion(K clave)
+    {
+        return hash(clave);
+    }
+    
     public void insertar(K clave, V valor)
     {
         int indice = hash(clave);
