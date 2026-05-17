@@ -10,8 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/EntregarServlet")
-    
+@WebServlet("/EntregarServlet")   
 public class EntregarServlet extends HttpServlet 
 {
     @Override
@@ -21,7 +20,6 @@ public class EntregarServlet extends HttpServlet
         int id = Integer.parseInt(request.getParameter("id"));
 
         PedidoDAO dao = new PedidoDAO();
-
         dao.marcarEntregado(id);
 
         response.sendRedirect("repartidor.jsp");

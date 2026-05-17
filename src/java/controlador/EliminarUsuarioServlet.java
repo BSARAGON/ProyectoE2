@@ -10,8 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/EliminarUsuarioServlet")
-    
+@WebServlet("/EliminarUsuarioServlet")    
 public class EliminarUsuarioServlet extends HttpServlet 
 {
     @Override
@@ -21,7 +20,6 @@ public class EliminarUsuarioServlet extends HttpServlet
         int id = Integer.parseInt(request.getParameter("id"));
 
         UsuarioDAO dao = new UsuarioDAO();
-
         dao.eliminar(id);
 
         response.sendRedirect("listarUsuarios.jsp");

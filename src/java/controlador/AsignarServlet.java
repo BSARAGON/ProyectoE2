@@ -11,7 +11,6 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/AsignarServlet")
-
 public class AsignarServlet extends HttpServlet 
 {
     @Override
@@ -22,7 +21,6 @@ public class AsignarServlet extends HttpServlet
         int repartidorId = Integer.parseInt(request.getParameter("repartidorId"));
 
         PedidoDAO dao = new PedidoDAO();
-
         dao.asignarRepartidor(pedidoId, repartidorId);
 
         response.sendRedirect("admin.jsp");

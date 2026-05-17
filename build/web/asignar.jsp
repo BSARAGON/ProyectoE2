@@ -1,17 +1,25 @@
-<%-- 
-    Document   : asignar
-    Created on : 16/05/2026, 11:10:59 p. m.
-    Author     : berna
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Asignar</title>
+</head>
+<body>
+
+    <h1>Asignar Repartidor</h1>
+
+    <form action="AsignarServlet" method="POST">
+
+        ID Pedido:
+        <input type="number" name="pedidoId">
+        <br><br>
+
+        ID Repartidor:
+        <input type="number" name="repartidorId">
+        <br><br>
+
+        <input type="submit" value="Asignar">
+
+    </form>
+</body>
 </html>

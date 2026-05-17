@@ -41,13 +41,13 @@ public class ArbolMulticamino
         } 
         else
         {
-            if (actual.hijos.size() < 2)
+            if (actual.hijos.size() < 3)
             {
                 actual.hijos.add(nuevo);
             }
             else
             {
-                insertarRecursivo(actual.hijos.get(1), nuevo);
+                insertarRecursivo(actual.hijos.get(actual.hijos.size()-1), nuevo);
             }
         }
     }

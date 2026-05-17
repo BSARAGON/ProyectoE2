@@ -1,33 +1,12 @@
-<%@page import="modelo.Usuario"%>
-<%
-if(session.getAttribute("usuario") == null)
-{
-    response.sendRedirect("login.jsp");
-    return;
-}
-
-Usuario u = (Usuario) session.getAttribute("usuario");
-
-if(!u.getRol().equals("Admin"))
-{
-    response.sendRedirect("login.jsp");
-    return;
-}
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>
-    Asignar Repartidor
-    </title>
+    <title>Asignar</title>
 </head>
 <body>
 
-    <h1>
-    Asignar Repartidor
-    </h1>
+    <h1>Asignar Repartidor</h1>
 
     <form action="AsignarServlet" method="POST">
 
@@ -42,9 +21,5 @@ if(!u.getRol().equals("Admin"))
         <input type="submit" value="Asignar">
 
     </form>
-    <br>
-
-    <a href="admin.jsp">Volver</a>
-
 </body>
 </html>

@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/berna/OneDrive/Documentos/NetBeansProjects/ProyectoE2/web/admin.jsp</file>
-            <file>file:/C:/Users/berna/OneDrive/Documentos/NetBeansProjects/ProyectoE2/web/historial.jsp</file>
-            <file>file:/C:/Users/berna/OneDrive/Documentos/NetBeansProjects/ProyectoE2/web/listarUsuarios.jsp</file>
-            <file>file:/C:/Users/berna/OneDrive/Documentos/NetBeansProjects/ProyectoE2/web/asignar.jsp</file>
-            <file>file:/C:/Users/berna/OneDrive/Documentos/NetBeansProjects/ProyectoE2/src/java/controlador/AsignarServlet.java</file>
-            <file>file:/C:/Users/berna/OneDrive/Documentos/NetBeansProjects/ProyectoE2/src/java/controlador/EntregarServlet.java</file>
-            <file>file:/C:/Users/berna/OneDrive/Documentos/NetBeansProjects/ProyectoE2/src/java/controlador/EliminarUsuarioServlet.java</file>
-            <file>file:/C:/Users/berna/OneDrive/Documentos/NetBeansProjects/ProyectoE2/web/logout.jsp</file>
+            <file>file:/C:/ProyectoEstructura/ProyectoE2/web/historial.jsp</file>
+            <file>file:/C:/ProyectoEstructura/ProyectoE2/web/listarUsuarios.jsp</file>
+            <file>file:/C:/ProyectoEstructura/ProyectoE2/web/repartidor.jsp</file>
         </group>
     </open-files>
 </project-private>
