@@ -64,6 +64,8 @@ ArrayList<Pedido> lista = dao.listarPedidos();
             
         <br><br>
         
-        <a href="admin.jsp">Regresar</a>
+        <a href="admin.jsp">
+            <button>Volver al menú</button>
+        </a>
     </body>
 </html>

@@ -37,11 +37,13 @@ if(usuario == null || usuario.getRol().equals("Admin"))
     
     <br><br>
 
-    <a href="admin.jsp">Regresar</a>
+    <a href="admin.jsp">
+        <button>Volver al menú</button>
+    </a>
 
-    <br><br>
-
-    <a href="logout.jsp">Cerrar Sesión</a>
+    <a href="logout.jsp">
+        <button>Cerrar sesión</button>
+    </a>
     
 </body>
 </html>
