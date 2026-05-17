@@ -30,7 +30,8 @@ ArrayList<Pedido> lista = dao.listarPedidos();
     </head>
     <body>
         <h1>PEDIDOS ASIGNADOS</h1>
-        <table border="1">
+        
+        <table border="1">  
             <tr>
                 <th>ID</th>
                 <th>Descripcion</th>

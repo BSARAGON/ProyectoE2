@@ -27,7 +27,7 @@ if(usuario == null || !usuario.getRol().equals("Cliente"))
         
         <form action="PedidoServlet" method="POST">
 
-            ID Pedido: <input type="number" name="id">
+            <input type="hidden" name="id" value="0">
             <br><br>
 
             <input type="hidden" name="clienteId" value="<%= usuario.getId() %>">

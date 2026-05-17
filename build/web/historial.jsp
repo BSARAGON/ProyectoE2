@@ -35,8 +35,8 @@ ArrayList<Pedido> lista = dao.listarPedidos();
             <tr>
                 <th>ID</th>
                 <th>Descripcion</th>
+                <th>Prioridad</th>
                 <th>Estado</th>
-                <th>Accion</th>
             </tr>
             
             <%

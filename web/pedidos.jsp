@@ -4,6 +4,25 @@
     Author     : berna
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelo.Usuario"%>
+<%@page import="modelo.Pedido"%>
+<%@page import="modelo.PedidoDAO"%>
+
+<%
+Usuario u = (Usuario) session.getAttribute("usuario");
+
+if(u == null || u.getRol().equals("Admin"))
+{
+    response.sendRedirect("login.jsp");
+    return;
+}
+
+
+PedidoDAO dao = new PedidoDAO();
+ArrayList<Pedido> lista = dao.listarPedidos();
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +31,40 @@
         <title>Pedidos</title>
     </head>
     <body>
-        <h1>LISTA PEDIDOS</h1>
-        <p>Aquí se listan todos los pedidos.</p>
+        <h1>LISTA DE PEDIDOS</h1>
+        
+        <table border="1">  
+            <tr>
+                <th>ID</th
+                <th>Cliente</th>
+                <th>Descripcion</th>
+                <th>Prioridad</th>
+                <th>Estado</th>
+                <th>Repartidor</th>
+            </tr>
+            
+            <%
+            for(Pedido p : lista)
+            {
+            %>
+
+            <tr>
+                <td><%= p.getId() %></td>
+                <td><%= p.getClienteId() %></td>
+                <td><%= p.getDescripcion() %></td>
+                <td><%= p.getPrioridad() %></td>
+                <td><%= p.getEstado() %></td>
+                <td><%= p.getRepartidorId() %></td>
+            </tr>
+
+            <%
+            }
+            %>
+            
+        </table>
+            
+        <br><br>
+        
+        <a href="admin.jsp">Regresar</a>
     </body>
 </html>

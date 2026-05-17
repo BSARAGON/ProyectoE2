@@ -3,12 +3,21 @@
     Created on : 16/05/2026, 11:10:43 p. m.
     Author     : berna
 --%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="modelo.UsuarioDAO"%>
 <%@page import="modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
+Usuario usuario = (Usuario) session.getAttribute("usuario");
+
+if(usuario == null || !usuario.getRol().equals("Admin"))
+{
+    response.sendRedirect("login.jsp");
+    return;
+}
+
 UsuarioDAO dao = new UsuarioDAO();
 ArrayList<Usuario> lista = dao.listarUsuarios();
 %>
@@ -35,6 +44,7 @@ ArrayList<Usuario> lista = dao.listarUsuarios();
             for(Usuario u : lista)
             {
             %>
+            
             <tr>
                 <td><%= u.getId() %></td>
                 <td><%= u.getNombre() %></td>

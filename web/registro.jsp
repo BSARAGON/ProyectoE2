@@ -16,7 +16,7 @@
         
         <form action="RegistroServlet" method="POST">
         
-        ID: <input type="number" name="id">
+        <input type="hidden" name="id" value="0">
         <br><br>
         
         Nombre: <input type="text" name="nombre">
