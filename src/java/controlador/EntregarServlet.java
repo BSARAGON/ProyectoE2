@@ -4,10 +4,26 @@
  */
 package controlador;
 
-/**
- *
- * @author berna
- */
-public class EntregarServlet {
+import modelo.PedidoDAO;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+import java.io.IOException;
+
+@WebServlet("/EntregarServlet")
     
+public class EntregarServlet extends HttpServlet 
+{
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException 
+    {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        PedidoDAO dao = new PedidoDAO();
+
+        dao.marcarEntregado(id);
+
+        response.sendRedirect("repartidor.jsp");
+    }
 }
