@@ -50,18 +50,28 @@ public class PedidoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        int clienteId = Integer.parseInt(request.getParameter("clienteId"));
-        
-        String descripcion = request.getParameter("descripcion");
-        String prioridad = request.getParameter("prioridad");
-        
-        Pedido p = new Pedido(0, clienteId, descripcion, prioridad, "Pendiente", 0);
-        
-        cola.add(p);
-        
-        PedidoDAO dao = new PedidoDAO();
-        dao.crearPedido(p);
-        
-        response.sendRedirect("historial.jsp");
+        try {
+            int clienteId = Integer.parseInt(request.getParameter("clienteId"));
+
+            String descripcion = request.getParameter("descripcion");
+            String prioridad = request.getParameter("prioridad");
+
+            Pedido p = new Pedido(0, clienteId, descripcion, prioridad, "Pendiente", 0);
+
+            cola.add(p);
+
+            PedidoDAO dao = new PedidoDAO();
+            dao.crearPedido(p);
+
+            System.out.println("PEDIDO CREADO");
+
+            response.sendRedirect("historial.jsp");
+            
+        } catch(Exception e)
+        {
+            e.printStackTrace();
+            
+            response.getWriter().println("ERROR AL CREAR PEDIDO");
+        }
     }
 }

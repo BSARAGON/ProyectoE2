@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,6 +24,26 @@
         <br><br>
         
         <input type="submit" value="Ingresar">
+        
         </form>
+        
+        <br>
+        
+        <%
+        String error = (String) request.getAttribute("error");
+
+        if(error != null)
+        {
+        %>
+
+        <p><%= error %></p>
+
+        <%
+        }
+        %>
+
+        <br>
+
+        <a href="registro.jsp">Ir a Registro</a>
     </body>
 </html>

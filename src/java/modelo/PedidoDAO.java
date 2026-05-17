@@ -15,7 +15,7 @@ public class PedidoDAO
     
     public void crearPedido(Pedido p)
     {
-        String sql = "INSERT INTO pedidos(clienteId, descripcion, prioridad, estado, repartidorId) VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO PEDIDOS(clienteId, descripcion, prioridad, estado, repartidorId) VALUES(?, ?, ?, ?, ?)";
         
         try {
             
@@ -29,6 +29,8 @@ public class PedidoDAO
             ps.setInt(5, p.getRepartidorId());
             
             ps.executeUpdate();
+            
+            System.out.println("PEDIDO GUARDADO");
             
         } catch (Exception e) 
         {
