@@ -34,6 +34,10 @@ public class LoginServlet extends HttpServlet {
         
         if (usuario != null)
         {
+            
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("usuario", usuario);
+            
             switch (usuario.getRol()) {
                 case "Admin":
                     response.sendRedirect("admin.jsp");
