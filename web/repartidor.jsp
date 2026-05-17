@@ -33,7 +33,7 @@ ArrayList<Pedido> lista = dao.listarPedidos();
         <table border="1">
             <tr>
                 <th>ID</th>
-                <th>Descripción</th>
+                <th>Descripcion</th>
                 <th>Estado</th>
                 <th>Accion</th>
             </tr>
@@ -61,6 +61,7 @@ ArrayList<Pedido> lista = dao.listarPedidos();
                 }
             }
             %>
+            
         </table>
         
         <br><br>
