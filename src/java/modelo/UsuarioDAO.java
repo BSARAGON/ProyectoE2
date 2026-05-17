@@ -38,8 +38,8 @@ public class UsuarioDAO {
             arbol.insertar(u.getId(), posicion);
 
             return true;
-        } 
-        catch (Exception e) 
+            
+        } catch (Exception e) 
         {
             e.printStackTrace();
         }
@@ -75,8 +75,7 @@ public class UsuarioDAO {
                 u.setRol(rs.getString("rol"));
             }
 
-        } 
-        catch (Exception e) 
+        } catch (Exception e) 
         {
             e.printStackTrace();
         }
@@ -95,6 +94,7 @@ public class UsuarioDAO {
             String sql = "SELECT * FROM usuarios";
             
             PreparedStatement ps = con.prepareStatement(sql);
+            
             ResultSet rs = ps.executeQuery();
             
             while(rs.next())
@@ -108,6 +108,7 @@ public class UsuarioDAO {
                 
                 lista.add(u);
             }
+            
         } catch (Exception e)
         {
             e.printStackTrace();
