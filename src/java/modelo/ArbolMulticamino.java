@@ -8,6 +8,38 @@ package modelo;
  *
  * @author berna
  */
-public class ArbolMulticamino {
-    
+public class ArbolMulticamino 
+{
+    NodoArbol raiz;
+
+    public void insertar(int idUsuario,int posicionHash) 
+    {
+        NodoArbol nuevo = new NodoArbol(idUsuario, posicionHash);
+
+        if (raiz == null) 
+        {
+            raiz = nuevo;
+
+        } 
+        else 
+        {
+            raiz.hijos.add(nuevo);
+        }
+    }
+
+    public void mostrar(NodoArbol nodo) 
+    {
+
+        if (nodo == null) 
+        {
+            return;
+        }
+
+        System.out.println("Usuario: " + nodo.idUsuario);
+
+        for (NodoArbol hijo : nodo.hijos) 
+        {
+            mostrar(hijo);
+        }
+    }    
 }
