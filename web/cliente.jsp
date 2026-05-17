@@ -27,9 +27,6 @@ if(usuario == null || !usuario.getRol().equals("Cliente"))
         
         <form action="PedidoServlet" method="POST">
 
-            <input type="hidden" name="id" value="0">
-            <br><br>
-
             <input type="hidden" name="clienteId" value="<%= usuario.getId() %>">
 
             Descripcion <input type="text" name="descripcion">
@@ -48,10 +45,15 @@ if(usuario == null || !usuario.getRol().equals("Cliente"))
             
         <br><br>
 
-        <a href="historial.jsp">Ver Historial</a>
+        <a href="historial.jsp">
+            <button>Ver Historial</button>
+        </a>
+
         <br><br>
 
-        <a href="logout.jsp">Cerrar Sesión</a>
+        <a href="logout.jsp">
+            <button>Cerrar Sesión</button>
+        </a>
     </body>
 </html>
 

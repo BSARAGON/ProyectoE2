@@ -59,5 +59,17 @@ ArrayList<Pedido> lista = dao.listarPedidos();
             %>
             
         </table>
+        
+            <br><br>
+
+        <a href="cliente.jsp">
+            <button>Volver al menú</button>
+        </a>
+
+        <br>
+
+        <a href="logout.jsp">
+            <button>Cerrar sesión</button>
+        </a>
     </body>
 </html>

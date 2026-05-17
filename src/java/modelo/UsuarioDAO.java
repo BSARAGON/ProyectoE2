@@ -18,24 +18,37 @@ public class UsuarioDAO {
     
     public boolean registrar(Usuario u) 
     {
-        String sql ="INSERT INTO usuarios VALUES(?,?,?,?,?)";
+        String sql ="INSERT INTO usuarios(nombre, correo, password, rol) VALUES(?,?,?,?)";
         
         try {
             
             Connection con = Conexion.getConexion();
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql, new String[]{"id"});
 
-            ps.setInt(1, u.getId());
-            ps.setString(2, u.getNombre());
-            ps.setString(3, u.getCorreo());
-            ps.setString(4, u.getPassword());
-            ps.setString(5, u.getRol());
+            ps.setString(1, u.getNombre());
+            ps.setString(2, u.getCorreo());
+            ps.setString(3, u.getPassword());
+            ps.setString(4, u.getRol());
             
             ps.executeUpdate();
             
+            ResultSet rs = ps.getGeneratedKeys();
+            
+            if (rs.next())
+            {
+                int idGenerado = rs.getInt(1);
+                u.setId(idGenerado);
+            }
+            
             tablaUsuarios.insertar(u.getId(), u);
+            
             int posicion = tablaUsuarios.obtenerPosicion(u.getId());
+            
             arbol.insertar(u.getId(), posicion);
+            
+            rs.close();
+            ps.close();
+            con.close();
 
             return true;
             
@@ -66,13 +79,22 @@ public class UsuarioDAO {
 
             if (rs.next()) 
             {
-                u = new Usuario();
+                int id = rs.getInt("id");
+                
+                u = tablaUsuarios.obtener(id);
+                
+                if (u == null)
+                {
+                    u = new Usuario();
 
-                u.setId(rs.getInt("id"));
-                u.setNombre(rs.getString("nombre"));
-                u.setCorreo(rs.getString("correo"));
-                u.setPassword(rs.getString("password"));
-                u.setRol(rs.getString("rol"));
+                    u.setId(id);
+                    u.setNombre(rs.getString("nombre"));
+                    u.setCorreo(rs.getString("correo"));
+                    u.setPassword(rs.getString("password"));
+                    u.setRol(rs.getString("rol"));
+                    
+                    tablaUsuarios.insertar(id, u);
+                } 
             }
 
         } catch (Exception e) 
@@ -109,6 +131,10 @@ public class UsuarioDAO {
                 lista.add(u);
             }
             
+            rs.close();
+            ps.close();
+            con.close();
+            
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -132,6 +158,9 @@ public class UsuarioDAO {
             ps.executeUpdate();
             
             tablaUsuarios.eliminar(id);
+
+            ps.close();
+            con.close();
             
         } catch (Exception e)
         {

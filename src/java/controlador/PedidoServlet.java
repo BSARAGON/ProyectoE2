@@ -50,11 +50,25 @@ public class PedidoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
+        HttpSession sesion = request.getSession(false);
+        
+        if (sesion == null)
+        {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+        
         try {
             int clienteId = Integer.parseInt(request.getParameter("clienteId"));
 
             String descripcion = request.getParameter("descripcion");
             String prioridad = request.getParameter("prioridad");
+            
+            if (descripcion == null || descripcion.trim().isEmpty())
+            {
+                response.getWriter().println("Descricpion invalida");
+                return;
+            }
 
             Pedido p = new Pedido(0, clienteId, descripcion, prioridad, "Pendiente", 0);
 

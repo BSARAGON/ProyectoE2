@@ -68,6 +68,8 @@ ArrayList<Pedido> lista = dao.listarPedidos();
         
         <br><br>
         
-        <a href="logout.jsp">Cerrar Sesión</a>
+        <a href="logout.jsp">
+            <button>Cerrar Sesión</button>
+        </a>
     </body>
 </html>

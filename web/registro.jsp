@@ -16,16 +16,13 @@
         
         <form action="RegistroServlet" method="POST">
         
-        <input type="hidden" name="id" value="0">
+        Nombre: <input type="text" name="nombre" required>
         <br><br>
         
-        Nombre: <input type="text" name="nombre">
+        Correo: <input type="text" name="correo" required>
         <br><br>
         
-        Correo: <input type="text" name="correo">
-        <br><br>
-        
-        Password: <input type="password" name="password">
+        Password: <input type="password" name="password" required>
         <br><br>
         
         Rol:
@@ -38,5 +35,16 @@
         <input type="submit" value="Registrar">
 
         </form>
+        
+        <br>
+
+        <a href="index.jsp">
+            <button type="button">Volver al inicio</button>
+        </a>
+
+        <a href="login.jsp">
+            <button type="button">Ir a Login</button>
+        </a>
+        
     </body>
 </html>

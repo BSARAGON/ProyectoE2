@@ -15,7 +15,7 @@ public class PedidoDAO
     
     public void crearPedido(Pedido p)
     {
-        String sql = "INSERT INTO PEDIDOS(clienteId, descripcion, prioridad, estado, repartidorId) VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pedidos(cliente_id, descripcion, prioridad, estado, repartidor_id) VALUES(?, ?, ?, ?, ?)";
         
         try {
             
@@ -29,6 +29,9 @@ public class PedidoDAO
             ps.setInt(5, p.getRepartidorId());
             
             ps.executeUpdate();
+            
+            ps.close();
+            con.close();
             
             System.out.println("PEDIDO GUARDADO");
             
@@ -46,7 +49,7 @@ public class PedidoDAO
             
             Connection con = Conexion.getConexion();
             
-            String sql = "SELECT * FROM pedidos";
+            String sql = "SELECT * FROM pedidos ORDER BY CASE prioridad WHEN 'Alta' THEN 1 WHEN 'Media' THEN 2 ELSE 3 END";
             
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -65,6 +68,10 @@ public class PedidoDAO
                 
                 lista.add(p);
             }
+            
+            rs.close();
+            ps.close();
+            con.close();
             
         } catch (Exception e) 
         {
@@ -88,6 +95,9 @@ public class PedidoDAO
             ps.setInt(2, pedidoId);
             
             ps.executeUpdate();
+
+            ps.close();
+            con.close();
             
         } catch (Exception e) 
         {
@@ -108,6 +118,9 @@ public class PedidoDAO
             ps.setInt(1, id);
             
             ps.executeUpdate();
+            
+            ps.close();
+            con.close();
             
         } catch (Exception e) 
         {

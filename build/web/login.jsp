@@ -29,6 +29,16 @@
         
         <br>
         
+        <a href="index.jsp">
+        <button type="button">Volver al inicio</button>
+        </a>
+
+        <a href="registro.jsp">
+            <button type="button">Registrarse</button>
+        </a>
+
+        <br><br>
+
         <%
         String error = (String) request.getAttribute("error");
 
@@ -36,14 +46,12 @@
         {
         %>
 
-        <p><%= error %></p>
-
+        <p style="color:red;"><%= error %></p>
         <%
         }
         %>
 
         <br>
 
-        <a href="registro.jsp">Ir a Registro</a>
     </body>
 </html>

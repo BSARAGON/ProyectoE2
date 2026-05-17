@@ -31,8 +31,7 @@ public class TablaHashGen<K, V>
     
     private int hash(K clave)
     {
-        int valor = Integer.parseInt(clave.toString());
-        return valor % tamanio;
+        return Math.abs(clave.hashCode()) % tamanio;
     }
     
     public int obtenerPosicion(K clave)
@@ -50,31 +49,28 @@ public class TablaHashGen<K, V>
         if (inicio == null)
         {
             tabla[indice] = nuevo;
+            return;
         }
-        else
+        
+        Nodo actual = inicio;
+            
+        while (actual != null)
         {
-            Nodo actual = inicio;
-            
-            while (actual.siguiente != null)
-            {
-                if (actual.clave.equals(clave))
-                {
-                    actual.valor = valor;
-                    return;
-                }
-                
-                actual = actual.siguiente;
-            }
-            
             if (actual.clave.equals(clave))
             {
-                actual.valor= valor;
+                actual.valor = valor;
+                return;
             }
-            else
+            
+            if(actual.siguiente == null)
             {
-                actual.siguiente = nuevo;
+                break;
             }
+            
+            actual = actual.siguiente;
         }
+        
+        actual = actual.siguiente;
     }
     
     public V obtener(K clave)

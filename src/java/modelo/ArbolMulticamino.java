@@ -51,4 +51,34 @@ public class ArbolMulticamino
             }
         }
     }
+    
+    public NodoArbol buscar(int idUsuario)
+    {
+        return buscarRecursivo(raiz, idUsuario);
+    }
+    
+    private NodoArbol buscarRecursivo(NodoArbol actual, int idUsuario)
+    {
+        if (actual == null)
+        {
+            return null;
+        }
+        
+        if (actual.idUsuario == idUsuario)
+        {
+            return actual;
+        }
+        
+        for (NodoArbol hijo : actual.hijos)
+        {
+            NodoArbol encontrado = buscarRecursivo(hijo, idUsuario);
+            
+            if (encontrado != null)
+            {
+                return encontrado;
+            }
+        }
+        
+        return null;
+    }
 }

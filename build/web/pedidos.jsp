@@ -8,6 +8,7 @@
 <%@page import="modelo.Usuario"%>
 <%@page import="modelo.Pedido"%>
 <%@page import="modelo.PedidoDAO"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
 Usuario u = (Usuario) session.getAttribute("usuario");
@@ -18,12 +19,10 @@ if(u == null || u.getRol().equals("Admin"))
     return;
 }
 
-
 PedidoDAO dao = new PedidoDAO();
 ArrayList<Pedido> lista = dao.listarPedidos();
 %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>

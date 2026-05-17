@@ -25,15 +25,26 @@ if(usuario == null || !usuario.getRol().equals("Admin"))
     <body>
         <h1>MENU ADMINISTRADOR</h1>
         
-        <a href="listarUsuarios.jsp">Listar Usuarios</a>
+        <a href="listarUsuarios.jsp">
+            <button>Listar Usuarios</button>
+        </a>
+
         <br><br>
 
-        <a href="pedidos.jsp">Ver Pedidos</a>
+        <a href="pedidos.jsp">
+            <button>Ver Pedidos</button>
+        </a>
+
         <br><br>
 
-        <a href="asignar.jsp">Asignar Repartidor</a>
+        <a href="asignar.jsp">
+            <button>Asignar Repartidor</button>
+        </a>
+
         <br><br>
 
-        <a href="logout.jsp">Cerrar Sesión</a>
+        <a href="logout.jsp">
+            <button>Cerrar Sesión</button>
+        </a>
     </body>
 </html>

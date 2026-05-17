@@ -25,17 +25,29 @@ public class RegistroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        int id = Integer.parseInt(request.getParameter("id"));
         String nombre = request.getParameter("nombre");
         String correo = request.getParameter("correo");
         String password = request.getParameter("password");
         String rol = request.getParameter("rol");
         
-        Usuario u = new Usuario(id, nombre, correo, password, rol);
+        if (nombre == null || nombre.trim().isEmpty() || correo == null || correo.trim().isEmpty() || password == null || password.trim().isEmpty())
+        {
+            response.getWriter().println("Datos inálidos");
+            return;
+        }
+        
+        Usuario u = new Usuario(0, nombre, correo, password, rol);
         
         UsuarioDAO dao = new UsuarioDAO();
-        dao.registrar(u);
+        boolean registrado = dao.registrar(u);
         
-        response.sendRedirect("login.jsp");
+        if (registrado)
+        {
+            response.sendRedirect("login.jsp");
+        }
+        else
+        {
+            response.getWriter().println("Error al registrar usuario");
+        }
     }
 }
