@@ -38,7 +38,8 @@ public class LoginServlet extends HttpServlet {
             HttpSession sesion = request.getSession();
             sesion.setAttribute("usuario", usuario);
             
-            switch (usuario.getRol()) {
+            switch (usuario.getRol()) 
+            {
                 case "Admin":
                     response.sendRedirect("admin.jsp");
                     break;
@@ -53,7 +54,9 @@ public class LoginServlet extends HttpServlet {
             }
         } else
         {
-            response.sendRedirect("login.jsp");
+            request.setAttribute("error", "Correo o contraseña incorrecto");
+            
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
-    }    
+    }
 }

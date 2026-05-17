@@ -131,6 +131,8 @@ public class UsuarioDAO {
             
             ps.executeUpdate();
             
+            tablaUsuarios.eliminar(id);
+            
         } catch (Exception e)
         {
             e.printStackTrace();

@@ -15,19 +15,18 @@ public class PedidoDAO
     
     public void crearPedido(Pedido p)
     {
-        String sql = "INSERT INTO pedidos VALUES(?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pedidos(clienteId, descripcion, prioridad, estado, repartidorId) VALUES(?, ?, ?, ?, ?)";
         
         try {
             
             Connection con = Conexion.getConexion();
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setInt(1, p.getId());
-            ps.setInt(2, p.getClienteId());
-            ps.setString(3, p.getDescripcion());
-            ps.setString(4, p.getPrioridad());
-            ps.setString(5, p.getEstado());
-            ps.setInt(6, p.getRepartidorId());
+            ps.setInt(1, p.getClienteId());
+            ps.setString(2, p.getDescripcion());
+            ps.setString(3, p.getPrioridad());
+            ps.setString(4, p.getEstado());
+            ps.setInt(5, p.getRepartidorId());
             
             ps.executeUpdate();
             

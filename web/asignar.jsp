@@ -14,11 +14,12 @@ if(usuario == null || usuario.getRol().equals("Admin"))
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Asignar</title>
+    <title>Asignar Repartidor</title>
 </head>
+
 <body>
 
-    <h1>Asignar Repartidor</h1>
+    <h1>ASIGNAR REPARTIDOR</h1>
 
     <form action="AsignarServlet" method="POST">
 
@@ -33,5 +34,14 @@ if(usuario == null || usuario.getRol().equals("Admin"))
         <input type="submit" value="Asignar">
 
     </form>
+    
+    <br><br>
+
+    <a href="admin.jsp">Regresar</a>
+
+    <br><br>
+
+    <a href="logout.jsp">Cerrar Sesión</a>
+    
 </body>
 </html>

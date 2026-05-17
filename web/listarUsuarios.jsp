@@ -19,6 +19,7 @@ if(usuario == null || !usuario.getRol().equals("Admin"))
 }
 
 UsuarioDAO dao = new UsuarioDAO();
+
 ArrayList<Usuario> lista = dao.listarUsuarios();
 %>
 
@@ -62,5 +63,13 @@ ArrayList<Usuario> lista = dao.listarUsuarios();
             }
             %>
         </table>
+        
+        <br><br>
+
+        <a href="admin.jsp">Regresar</a>
+
+        <br><br>
+
+        <a href="logout.jsp">Cerrar Sesión</a>
     </body>
 </html>

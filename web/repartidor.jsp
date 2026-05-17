@@ -19,6 +19,7 @@ if(usuario == null || !usuario.getRol().equals("Repartidor"))
 }
 
 PedidoDAO dao = new PedidoDAO();
+
 ArrayList<Pedido> lista = dao.listarPedidos();
 %>
 

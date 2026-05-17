@@ -50,19 +50,18 @@ public class PedidoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        int id = Integer.parseInt(request.getParameter("id"));
         int clienteId = Integer.parseInt(request.getParameter("clienteId"));
         
         String descripcion = request.getParameter("descripcion");
         String prioridad = request.getParameter("prioridad");
         
-        Pedido p = new Pedido(id, clienteId, descripcion, prioridad, "Pendiente", 0);
+        Pedido p = new Pedido(0, clienteId, descripcion, prioridad, "Pendiente", 0);
         
         cola.add(p);
         
         PedidoDAO dao = new PedidoDAO();
         dao.crearPedido(p);
         
-        response.sendRedirect("cliente.jsp");
+        response.sendRedirect("historial.jsp");
     }
 }
