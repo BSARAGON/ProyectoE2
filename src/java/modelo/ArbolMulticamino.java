@@ -8,6 +8,7 @@ package modelo;
  *
  * @author berna
  */
+
 public class ArbolMulticamino 
 {
     NodoArbol raiz;
@@ -19,27 +20,35 @@ public class ArbolMulticamino
         if (raiz == null) 
         {
             raiz = nuevo;
-
+            return;
         } 
-        else 
-        {
-            raiz.hijos.add(nuevo);
-        }
+        
+        insertarRecursivo(raiz, nuevo);
     }
 
-    public void mostrar(NodoArbol nodo) 
+    private void insertarRecursivo(NodoArbol actual, NodoArbol nuevo)
     {
-
-        if (nodo == null) 
+        if (nuevo.idUsuario < actual.idUsuario)
         {
-            return;
-        }
-
-        System.out.println("Usuario: " + nodo.idUsuario);
-
-        for (NodoArbol hijo : nodo.hijos) 
+            if (actual.hijos.size() == 0)
+            {
+                actual.hijos.add(nuevo);
+            }
+            else
+            {
+                insertarRecursivo(actual.hijos.get(0), nuevo);
+            }
+        } 
+        else
         {
-            mostrar(hijo);
+            if (actual.hijos.size() < 2)
+            {
+                actual.hijos.add(nuevo);
+            }
+            else
+            {
+                insertarRecursivo(actual.hijos.get(1), nuevo);
+            }
         }
-    }    
+    }
 }

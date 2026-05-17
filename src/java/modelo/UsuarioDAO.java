@@ -34,6 +34,8 @@ public class UsuarioDAO {
             ps.executeUpdate();
             
             tablaUsuarios.insertar(u.getId(), u);
+            int posicion = tablaUsuarios.obtenerPosicion(u.getId());
+            arbol.insertar(u.getId(), posicion);
 
             return true;
         } 
@@ -41,6 +43,7 @@ public class UsuarioDAO {
         {
             e.printStackTrace();
         }
+        
         return false;
     }
 
@@ -52,7 +55,7 @@ public class UsuarioDAO {
             
             Connection con = Conexion.getConexion();
 
-            String sql =  "SELECT * FROM usuarios " + "WHERE correo=? "  + "AND password=?";
+            String sql =  "SELECT * FROM usuarios WHERE correo=? AND password=?";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -79,5 +82,57 @@ public class UsuarioDAO {
         }
 
         return u;
+    }
+    
+    public ArrayList<Usuario> listarUsuarios()
+    {
+        ArrayList<Usuario> lista = new ArrayList<>();
+        
+        try {
+            
+            Connection con = Conexion.getConexion();
+            
+            String sql = "SELECT * FROM usuarios";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next())
+            {
+                Usuario u = new Usuario();
+                
+                u.setId(rs.getInt("id"));
+                u.setNombre(rs.getString("nombre"));
+                u.setCorreo(rs.getString("correo"));
+                u.setRol(rs.getString("rol"));
+                
+                lista.add(u);
+            }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        return lista;
+    }
+    
+    public void eliminar(int id)
+    {
+        try {
+            
+            Connection con = Conexion.getConexion();
+            
+            String sql = "DELETE FROM usuarios WHERE id=?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            ps.executeUpdate();
+            
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }
