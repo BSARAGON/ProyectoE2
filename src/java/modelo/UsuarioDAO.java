@@ -60,50 +60,43 @@ public class UsuarioDAO {
         return false;
     }
 
-    public Usuario login(String correo, String password) 
-    {
+    public Usuario login(String correo, String password) {
 
-        Usuario u = null;
+    Usuario u = null;
 
-        try {
+    try {
 
-            Connection con = Conexion.getConexion();
+        Connection con = Conexion.getConexion();
 
-            String sql = "SELECT * FROM USUARIOS WHERE CORREO = ?";
+        String sql = "SELECT * FROM USUARIOS WHERE correo = ? AND password = ?";
 
-            PreparedStatement ps = con.prepareStatement(sql);
+        PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setString(1, correo.trim());
+        ps.setString(1, correo.trim());
+        ps.setString(2, password.trim());
 
-            ResultSet rs = ps.executeQuery();
+        ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
+        if (rs.next()) {
 
-                String passBD = rs.getString("PASSWORD");
+            u = new Usuario();
 
-
-                if (passBD.equals(password.trim())) {
-
-                    u = new Usuario();
-
-                    u.setId(rs.getInt("ID"));
-                    u.setNombre(rs.getString("NOMBRE"));
-                    u.setCorreo(rs.getString("CORREO"));
-                    u.setPassword(passBD);
-                    u.setRol(rs.getString("ROL").trim().toLowerCase());
-                }
-            }
-
-            rs.close();
-            ps.close();
-            con.close();
-
-        } catch (Exception e) 
-        {
-            e.printStackTrace();
+            u.setId(rs.getInt("ID"));
+            u.setNombre(rs.getString("NOMBRE"));
+            u.setCorreo(rs.getString("CORREO"));
+            u.setPassword(rs.getString("PASSWORD"));
+            u.setRol(rs.getString("ROL"));
         }
 
-        return u;
+        rs.close();
+        ps.close();
+        con.close();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return u;
 }
     
     public ArrayList<Usuario> listarUsuarios()

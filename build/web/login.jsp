@@ -15,7 +15,7 @@
     <body>
         <h1>LOGIN</h1>
         
-        <form action="LoginServlet" method="POST">
+        <form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
         
         Correo: <input type="text" name="correo">
         <br><br>
