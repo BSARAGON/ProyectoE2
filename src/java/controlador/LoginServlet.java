@@ -19,25 +19,29 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
-    
+public class LoginServlet extends HttpServlet 
+{
+    //Valida credenciales del usuario y redirige según su rol.
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
-        
+            throws ServletException, IOException 
+    {
+         // Datos ingresados en el login
         String correo = request.getParameter("correo");
         String password = request.getParameter("password");
         
         UsuarioDAO dao = new UsuarioDAO();
         
+        // Verifica credenciales en la base de datos
         Usuario usuario = dao.login(correo, password);
         
         if (usuario != null)
         {
-            
+            // Creación de sesión si el login es correcto
             HttpSession sesion = request.getSession();
             sesion.setAttribute("usuario", usuario);
             
+            // Redirección según el rol del usuario
             switch (usuario.getRol()) 
             {
                 case "Admin":
@@ -52,8 +56,10 @@ public class LoginServlet extends HttpServlet {
                 default:
                     break;
             }
-        } else
+        } 
+        else
         {
+            // Error de autenticación
             request.setAttribute("error", "Correo o contraseña incorrecto");
             
             request.getRequestDispatcher("login.jsp").forward(request, response);

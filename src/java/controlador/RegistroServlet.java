@@ -19,26 +19,31 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/RegistroServlet")
-public class RegistroServlet extends HttpServlet {
-    
+public class RegistroServlet extends HttpServlet 
+{
+    //Registra un nuevo usuario en el sistema.
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
-        
+            throws ServletException, IOException 
+    {
+        // Datos del formulario    
         String nombre = request.getParameter("nombre");
         String correo = request.getParameter("correo");
         String password = request.getParameter("password");
         String rol = request.getParameter("rol");
         
+        // Validación de campos obligatorios
         if (nombre == null || nombre.trim().isEmpty() || correo == null || correo.trim().isEmpty() || password == null || password.trim().isEmpty())
         {
             response.getWriter().println("Datos inálidos");
             return;
         }
         
+        // Creación del objeto usuario
         Usuario u = new Usuario(0, nombre, correo, password, rol);
         
         UsuarioDAO dao = new UsuarioDAO();
+        // Registro en base de datos
         boolean registrado = dao.registrar(u);
         
         if (registrado)

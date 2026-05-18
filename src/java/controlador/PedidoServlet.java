@@ -23,6 +23,7 @@ import java.io.IOException;
 @WebServlet("/PedidoServlet")
 public class PedidoServlet extends HttpServlet {
     
+    //Cola de prioridad para manejar pedidos según su urgencia.
     PriorityQueue<Pedido> cola = new PriorityQueue<>((a, b) -> 
     {
         int prioridadA = obtenerValor(a.getPrioridad());
@@ -31,6 +32,7 @@ public class PedidoServlet extends HttpServlet {
         return prioridadA - prioridadB;
     });
     
+    //Convierte la prioridad textual en valor numérico.
     private static int obtenerValor(String prioridad)
     {
         if (prioridad.equals("Alta"))
@@ -46,34 +48,42 @@ public class PedidoServlet extends HttpServlet {
         return 3;
     }
     
+    //Crea un nuevo pedido y lo guarda en la base de datos.
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
         HttpSession sesion = request.getSession(false);
         
+        // Verificación de sesión activa
         if (sesion == null)
         {
             response.sendRedirect("login.jsp");
             return;
         }
         
-        try {
+        try 
+        {
+            // Datos del pedido
             int clienteId = Integer.parseInt(request.getParameter("clienteId"));
 
             String descripcion = request.getParameter("descripcion");
             String prioridad = request.getParameter("prioridad");
             
+            // Validación básica
             if (descripcion == null || descripcion.trim().isEmpty())
             {
                 response.getWriter().println("Descricpion invalida");
                 return;
             }
-
+            
+            // Creación del objeto pedido
             Pedido p = new Pedido(0, clienteId, descripcion, prioridad, "Pendiente", 0);
-
+            
+            // Se agrega a la cola de prioridad
             cola.add(p);
-
+            
+            // Guardado en base de datos
             PedidoDAO dao = new PedidoDAO();
             dao.crearPedido(p);
 
@@ -81,7 +91,8 @@ public class PedidoServlet extends HttpServlet {
 
             response.sendRedirect("historial.jsp");
             
-        } catch(Exception e)
+        } 
+        catch(Exception e)
         {
             e.printStackTrace();
             
