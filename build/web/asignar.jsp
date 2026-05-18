@@ -4,7 +4,7 @@
 <%
 Usuario usuario = (Usuario) session.getAttribute("usuario");
 
-if(usuario == null || !usuario.getRol().equals("admin"))
+if(usuario == null || !"admin".equals(usuario.getRol()))
 {
     response.sendRedirect("login.jsp");
     return;
@@ -44,31 +44,32 @@ ArrayList<Usuario> usuarios = udao.listarUsuarios();
         %>
 
         <tr>
+            
+            <form action="AsignarServlet" method="POST">
+            
             <td><%= p.getId() %></td>
             <td><%= p.getDescripcion() %></td>
             <td><%= p.getEstado() %></td>
 
-            <form action="AsignarServlet" method="POST">
+            <td>
+                <input type="hidden" name="pedidoId" value="<%= p.getId() %>">
 
-                <td>
-                    <input type="hidden" name="pedidoId" value="<%= p.getId() %>">
+                <select name="repartidorId" required>
+                    <option value="">-- Seleccionar --</option>
 
-                    <select name="repartidorId">
-                        <option value="0">-- Seleccionar --</option>
-
-                        <%
-                        for(Usuario u : usuarios)
+                    <%
+                    for(Usuario u : usuarios)
+                    {
+                        if(u.getRol() != null && u.getRol().equalsIgnoreCase("repartidor"))
                         {
-                            if(u.getRol().equals("Repartidor"))
-                            {
-                        %>
-                            <option value="<%= u.getId() %>">
-                                <%= u.getNombre() %>
-                            </option>
-                        <%
-                            }
+                    %>
+                        <option value="<%= u.getId() %>">
+                            <%= u.getNombre() %>
+                        </option>
+                    <%
                         }
-                        %>
+                    }
+                    %>
 
                     </select>
                 </td>

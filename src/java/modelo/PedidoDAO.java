@@ -60,11 +60,11 @@ public class PedidoDAO
                 Pedido p = new Pedido();
                 
                 p.setId(rs.getInt("id"));
-                p.setClienteId(rs.getInt("clienteId"));
+                p.setClienteId(rs.getInt("cliente_id"));
                 p.setDescripcion(rs.getString("descripcion"));
                 p.setPrioridad(rs.getString("prioridad"));
                 p.setEstado(rs.getString("estado"));
-                p.setRepartidorId(rs.getInt("repartidorId"));
+                p.setRepartidorId(rs.getInt("repartidor_id"));
                 
                 lista.add(p);
             }
@@ -129,7 +129,7 @@ public class PedidoDAO
             
             Connection con = Conexion.getConexion();
             
-            String sql = "UPDATE pedidos SET repartidorId=?, estado='Asignado' WHERE id=?";
+            String sql = "UPDATE pedidos SET repartidor_id=?, estado='Asignado' WHERE id=?";
             
             PreparedStatement ps = con.prepareStatement(sql);
             
