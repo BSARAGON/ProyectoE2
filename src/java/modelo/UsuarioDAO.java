@@ -64,44 +64,39 @@ public class UsuarioDAO {
     {
         Usuario u = null;
 
-        try {
-            
+        try 
+        {
             Connection con = Conexion.getConexion();
 
-            String sql = "SELECT * FROM usuarios WHERE LOWER(TRIM(correo)) = LOWER(TRIM(?)) AND TRIM(password) = TRIM(?)";
+            String sql = "SELECT * FROM usuarios WHERE correo = ? AND password = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setString(1, correo);
-            ps.setString(2, password);
+            ps.setString(1, correo.trim());
+            ps.setString(2, password.trim());
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) 
             {
-                int id = rs.getInt("id");
-                
-                u = tablaUsuarios.obtener(id);
-                
-                if (u == null)
-                {
-                    u = new Usuario();
+                u = new Usuario();
 
-                    u.setId(id);
-                    u.setNombre(rs.getString("nombre"));
-                    u.setCorreo(rs.getString("correo"));
-                    u.setPassword(rs.getString("password"));
-                    u.setRol(rs.getString("rol"));
-                    
-                    tablaUsuarios.insertar(id, u);
-                } 
+                u.setId(rs.getInt("id"));
+                u.setNombre(rs.getString("nombre"));
+                u.setCorreo(rs.getString("correo"));
+                u.setPassword(rs.getString("password"));
+                u.setRol(rs.getString("rol"));
+
+                // opcional: guardar en estructuras
+                tablaUsuarios.insertar(u.getId(), u);
             }
-            
+
             rs.close();
             ps.close();
             con.close();
 
-        } catch (Exception e) 
+        } 
+        catch (Exception e) 
         {
             e.printStackTrace();
         }
