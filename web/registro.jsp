@@ -10,41 +10,48 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registro</title>
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/formularios.css">
+        <link rel="stylesheet" href="css/login.css">
     </head>
     <body>
-        <h1>REGISTRO</h1>
-        
-        <form action="RegistroServlet" method="POST">
-        
-        Nombre: <input type="text" name="nombre" required>
-        <br><br>
-        
-        Correo: <input type="text" name="correo" required>
-        <br><br>
-        
-        Password: <input type="password" name="password" required>
-        <br><br>
-        
-        Rol:
-        <select name="rol">
-            <option>cliente</option>
-            <option>repartidor</option>
-        </select>
-        <br><br>
-        
-        <input type="submit" value="Registrar">
+        <div class="login-container">
 
-        </form>
-        
-        <br>
+            <h1>REGISTRO</h1>
 
-        <a href="index.jsp">
-            <button type="button">Volver al inicio</button>
-        </a>
+            <form action="RegistroServlet" method="POST">
 
-        <a href="login.jsp">
-            <button type="button">Ir a Login</button>
-        </a>
-        
+                <label>Nombre</label>
+                <input type="text" name="nombre" required>
+
+                <label>Correo</label>
+                <input type="text" name="correo" required>
+
+                <label>Password</label>
+                <input type="password" name="password" required>
+
+                <label>Rol</label>
+
+                <select name="rol">
+                    <option>cliente</option>
+                    <option>repartidor</option>
+                </select>
+
+                <input type="submit" value="Registrar">
+
+            </form>
+
+            <br>
+
+            <a href="index.jsp">
+                <button type="button">Volver al inicio</button>
+            </a>
+
+            <a href="login.jsp">
+                <button type="button">Ir a Login</button>
+            </a>
+
+        </div>
     </body>
 </html>

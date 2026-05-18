@@ -1,0 +1,85 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18/05/2026, 12:11:08 a. m.
+    Author     : berna
+*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background:
+    linear-gradient(rgba(0,0,0,0.55),
+    rgba(0,0,0,0.55)),
+    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    color:var(--crema);
+
+    min-height:100vh;
+
+    padding:40px;
+}
+
+h1{
+    margin-bottom:25px;
+    color:var(--crema);
+    text-align:center;
+    letter-spacing:1px;
+}
+
+button,
+input[type="submit"]{
+
+    background:var(--vino);
+    color:white;
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    font-weight:bold;
+}
+
+button:hover,
+input[type="submit"]:hover{
+
+    background:var(--verdeOscuro);
+    transform:translateY(-2px);
+}
+
+a{
+    text-decoration:none;
+}
+
+.container{
+
+    max-width:1100px;
+    margin:auto;
+
+    background:rgba(0,0,0,0.45);
+
+    backdrop-filter:blur(8px);
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:var(--sombra);
+}

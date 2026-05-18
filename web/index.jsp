@@ -10,10 +10,37 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inicio</title>
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/dashboard.css">
     </head>
+    
     <body>
-        <h1>Sistema Delivery</h1>
-        <a href="login.jsp">Login</a>
-        <a href="registro.jsp">Registro</a>
+        <div class="container">
+
+        <h1>SISTEMA DELIVERY</h1>
+
+        <div class="menu">
+
+            <div class="card">
+                <h3>Iniciar Sesión</h3>
+
+                <a href="login.jsp">
+                    <button>Ingresar</button>
+                </a>
+            </div>
+
+            <div class="card">
+                <h3>Crear Cuenta</h3>
+
+                <a href="registro.jsp">
+                    <button>Registrarse</button>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
     </body>
 </html>

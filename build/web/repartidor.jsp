@@ -28,48 +28,62 @@ ArrayList<Pedido> lista = dao.listarPedidos();
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Repartidor</title>
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/tablas.css">
     </head>
     <body>
-        <h1>PEDIDOS ASIGNADOS</h1>
-        
-        <table border="1">  
-            <tr>
-                <th>ID</th>
-                <th>Descripcion</th>
-                <th>Estado</th>
-                <th>Accion</th>
-            </tr>
-            
-            <%
-            for(Pedido p : lista)
-            {
-                if(p.getRepartidorId() == usuario.getId())
+        <div class="container">
+
+            <h1>PEDIDOS ASIGNADOS</h1>
+
+            <table>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Descripcion</th>
+                    <th>Estado</th>
+                    <th>Accion</th>
+                </tr>
+
+                <%
+                for(Pedido p : lista)
                 {
-            %>
+                    if(p.getRepartidorId() == usuario.getId())
+                    {
+                %>
 
-            <tr>
-                <td><%= p.getId() %></td>
-                <td><%= p.getDescripcion() %></td>
-                <td><%= p.getEstado() %></td>
-                <td>
-                    <form action="EntregarServlet" method="POST">
-                        <input type="hidden" name="id" value="<%= p.getId() %>">
-                        <input type="submit" value="Marcar Entregado">
-                    </form>
-                </td>
-            </tr>
+                <tr>
 
-            <%
+                    <td><%= p.getId() %></td>
+                    <td><%= p.getDescripcion() %></td>
+                    <td><%= p.getEstado() %></td>
+
+                    <td>
+                        <form action="EntregarServlet" method="POST">
+
+                            <input type="hidden" name="id" value="<%= p.getId() %>">
+
+                            <input type="submit" value="Marcar Entregado">
+
+                        </form>
+                    </td>
+
+                </tr>
+
+                <%
+                    }
                 }
-            }
-            %>
-            
-        </table>
-        
-        <br><br>
-        
-        <a href="logout.jsp">
-            <button>Cerrar Sesión</button>
-        </a>
+                %>
+
+            </table>
+
+            <br><br>
+
+            <a href="logout.jsp">
+                <button>Cerrar Sesión</button>
+            </a>
+
+        </div>
     </body>
 </html>

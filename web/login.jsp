@@ -11,47 +11,54 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/formularios.css">
+        <link rel="stylesheet" href="css/login.css">
     </head>
     <body>
-        <h1>LOGIN</h1>
-        
-        <form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
-        
-        Correo: <input type="text" name="correo">
-        <br><br>
-        
-        Password: <input type="password" name="password">
-        <br><br>
-        
-        <input type="submit" value="Ingresar">
-        
-        </form>
-        
-        <br>
-        
-        <a href="index.jsp">
-        <button type="button">Volver al inicio</button>
-        </a>
+        <div class="login-container">
 
-        <a href="registro.jsp">
-            <button type="button">Registrarse</button>
-        </a>
+            <h1>LOGIN</h1>
 
-        <br><br>
+            <form action="${pageContext.request.contextPath}/LoginServlet" method="POST">
 
-        <%
-        String error = (String) request.getAttribute("error");
+                <label>Correo</label>
+                <input type="text" name="correo" required>
 
-        if(error != null)
-        {
-        %>
+                <label>Password</label>
+                <input type="password" name="password" required>
 
-        <p style="color:red;"><%= error %></p>
-        <%
-        }
-        %>
+                <input type="submit" value="Ingresar">
 
-        <br>
+            </form>
 
+            <br>
+
+            <a href="index.jsp">
+                <button type="button">Volver al inicio</button>
+            </a>
+
+            <a href="registro.jsp">
+                <button type="button">Registrarse</button>
+            </a>
+
+            <br><br>
+
+            <%
+            String error = (String) request.getAttribute("error");
+
+            if(error != null)
+            {
+            %>
+
+            <p style="color:red;"><%= error %></p>
+
+            <%
+            }
+            %>
+
+        </div>
+    
     </body>
 </html>

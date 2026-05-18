@@ -22,6 +22,9 @@ ArrayList<Usuario> usuarios = udao.listarUsuarios();
 <head>
     <meta charset="UTF-8">
     <title>Asignar Repartidor</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/tablas.css">
 </head>
 
 <body>

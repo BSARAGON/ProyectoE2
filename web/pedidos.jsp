@@ -28,6 +28,9 @@ ArrayList<Pedido> lista = dao.listarPedidos();
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pedidos</title>
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/tablas.css">
     </head>
     <body>
         <h1>LISTA DE PEDIDOS</h1>

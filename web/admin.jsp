@@ -21,24 +21,51 @@ if(usuario == null || !usuario.getRol().equals("admin"))
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Administrador</title>
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/dashboard.css">
     </head>
     <body>
-        <h1>MENU ADMINISTRADOR</h1>
-        
-        <a href="listarUsuarios.jsp">
-            <button>Gestionar Usuarios</button>
-        </a>
-        
-        <a href="pedidos.jsp">
-            <button>Ver Todos los Pedidos</button>
-        </a>
-        
-        <a href="asignar.jsp">
-            <button>Asignar Repartidores</button>
-        </a>
-        
-        <a href="logout.jsp">
-            <button>Cerrar Sesión</button>
-        </a>
+        <div class="container">
+
+            <h1>MENU ADMINISTRADOR</h1>
+
+            <div class="menu">
+
+                <div class="card">
+                    <h3>Gestionar Usuarios</h3>
+
+                    <a href="listarUsuarios.jsp">
+                        <button>Ingresar</button>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <h3>Ver Pedidos</h3>
+
+                    <a href="pedidos.jsp">
+                        <button>Ingresar</button>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <h3>Asignar Repartidores</h3>
+
+                    <a href="asignar.jsp">
+                        <button>Ingresar</button>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <h3>Cerrar Sesión</h3>
+
+                    <a href="logout.jsp">
+                        <button>Cerrar</button>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
     </body>
 </html>
