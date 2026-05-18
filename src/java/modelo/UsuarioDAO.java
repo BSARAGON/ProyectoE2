@@ -62,47 +62,49 @@ public class UsuarioDAO {
 
     public Usuario login(String correo, String password) 
     {
+
         Usuario u = null;
 
-        try 
-        {
+        try {
+
             Connection con = Conexion.getConexion();
 
-            String sql = "SELECT * FROM USUARIOS WHERE CORREO = ? AND PASSWORD = ?";
+            String sql = "SELECT * FROM USUARIOS WHERE CORREO = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setString(1, correo.trim());
-            ps.setString(2, password.trim());
 
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) 
-            {
-                u = new Usuario();
+            if (rs.next()) {
 
-                u.setId(rs.getInt("ID"));
-                u.setNombre(rs.getString("NOMBRE"));
-                u.setCorreo(rs.getString("CORREO"));
-                u.setPassword(rs.getString("PASSWORD"));
-                u.setRol(rs.getString("ROL"));
+                String passBD = rs.getString("PASSWORD");
 
-                // opcional: guardar en estructuras
-                tablaUsuarios.insertar(u.getId(), u);
+
+                if (passBD.equals(password.trim())) {
+
+                    u = new Usuario();
+
+                    u.setId(rs.getInt("ID"));
+                    u.setNombre(rs.getString("NOMBRE"));
+                    u.setCorreo(rs.getString("CORREO"));
+                    u.setPassword(passBD);
+                    u.setRol(rs.getString("ROL").trim().toLowerCase());
+                }
             }
 
             rs.close();
             ps.close();
             con.close();
 
-        } 
-        catch (Exception e) 
+        } catch (Exception e) 
         {
             e.printStackTrace();
         }
 
         return u;
-    }
+}
     
     public ArrayList<Usuario> listarUsuarios()
     {

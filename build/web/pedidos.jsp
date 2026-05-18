@@ -13,7 +13,7 @@
 <%
 Usuario u = (Usuario) session.getAttribute("usuario");
 
-if(u == null || u.getRol().equals("Admin"))
+if(u == null || u.getRol().equals("admin"))
 {
     response.sendRedirect("login.jsp");
     return;
