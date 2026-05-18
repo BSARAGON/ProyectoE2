@@ -27,8 +27,8 @@
         
         Rol:
         <select name="rol">
-            <option>Cliente</option>
-            <option>Repartidor</option>
+            <option>cliente</option>
+            <option>repartidor</option>
         </select>
         <br><br>
         

@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Nix_xD/Documents/ProyectoEst/ProyectoE2/src/java/controlador/AsignarServlet.java</file>
             <file>file:/C:/Users/Nix_xD/Documents/ProyectoEst/ProyectoE2/src/java/controlador/EliminarUsuarioServlet.java</file>
             <file>file:/C:/Users/Nix_xD/Documents/ProyectoEst/ProyectoE2/src/java/controlador/EntregarServlet.java</file>
             <file>file:/C:/Users/Nix_xD/Documents/ProyectoEst/ProyectoE2/src/java/controlador/LoginServlet.java</file>
             <file>file:/C:/Users/Nix_xD/Documents/ProyectoEst/ProyectoE2/src/java/controlador/PedidoServlet.java</file>
             <file>file:/C:/Users/Nix_xD/Documents/ProyectoEst/ProyectoE2/src/java/controlador/RegistroServlet.java</file>
+=======
+            <file>file:/C:/ProyectoEstructura/ProyectoE2/src/java/modelo/UsuarioDAO.java</file>
+            <file>file:/C:/ProyectoEstructura/ProyectoE2/web/login.jsp</file>
+            <file>file:/C:/ProyectoEstructura/ProyectoE2/src/java/controlador/LoginServlet.java</file>
+>>>>>>> 0fdcbdc23e3b0624077b377a04cfdf332a96ce1b
         </group>
     </open-files>
 </project-private>

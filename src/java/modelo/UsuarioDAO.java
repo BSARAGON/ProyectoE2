@@ -60,49 +60,44 @@ public class UsuarioDAO {
         return false;
     }
 
-    public Usuario login(String correo, String password) 
-    {
-        Usuario u = null;
+    public Usuario login(String correo, String password) {
 
-        try 
-        {
-            Connection con = Conexion.getConexion();
+    Usuario u = null;
 
-            String sql = "SELECT * FROM USUARIOS WHERE CORREO = ? AND PASSWORD = ?";
+    try {
 
-            PreparedStatement ps = con.prepareStatement(sql);
+        Connection con = Conexion.getConexion();
 
-            ps.setString(1, correo.trim());
-            ps.setString(2, password.trim());
+        String sql = "SELECT * FROM USUARIOS WHERE correo = ? AND password = ?";
 
-            ResultSet rs = ps.executeQuery();
+        PreparedStatement ps = con.prepareStatement(sql);
 
-            if (rs.next()) 
-            {
-                u = new Usuario();
+        ps.setString(1, correo.trim());
+        ps.setString(2, password.trim());
 
-                u.setId(rs.getInt("ID"));
-                u.setNombre(rs.getString("NOMBRE"));
-                u.setCorreo(rs.getString("CORREO"));
-                u.setPassword(rs.getString("PASSWORD"));
-                u.setRol(rs.getString("ROL"));
+        ResultSet rs = ps.executeQuery();
 
-                // opcional: guardar en estructuras
-                tablaUsuarios.insertar(u.getId(), u);
-            }
+        if (rs.next()) {
 
-            rs.close();
-            ps.close();
-            con.close();
+            u = new Usuario();
 
-        } 
-        catch (Exception e) 
-        {
-            e.printStackTrace();
+            u.setId(rs.getInt("ID"));
+            u.setNombre(rs.getString("NOMBRE"));
+            u.setCorreo(rs.getString("CORREO"));
+            u.setPassword(rs.getString("PASSWORD"));
+            u.setRol(rs.getString("ROL"));
         }
 
-        return u;
+        rs.close();
+        ps.close();
+        con.close();
+
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+
+    return u;
+}
     
     public ArrayList<Usuario> listarUsuarios()
     {
