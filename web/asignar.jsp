@@ -1,4 +1,5 @@
-<%@page import="modelo.Usuario"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelo.*"%>
 
 <%
 Usuario usuario = (Usuario) session.getAttribute("usuario");
@@ -8,6 +9,12 @@ if(usuario == null || usuario.getRol().equals("Admin"))
     response.sendRedirect("login.jsp");
     return;
 }
+
+PedidoDAO pdao = new PedidoDAO();
+UsuarioDAO udao = new UsuarioDAO();
+
+ArrayList<Pedido> pedidos = pdao.listarPedidos();
+ArrayList<Usuario> usuarios = udao.listarUsuarios();
 %>
 
 <!DOCTYPE html>
@@ -19,22 +26,66 @@ if(usuario == null || usuario.getRol().equals("Admin"))
 
 <body>
 
-    <h1>ASIGNAR REPARTIDOR</h1>
+    <h1>ASIGNAR REPARTIDOR A PEDIDOS</h1>
 
-    <form action="AsignarServlet" method="POST">
+    <table border="1">
 
-        ID Pedido:
-        <input type="number" name="pedidoId">
-        <br><br>
+        <tr>
+            <th>ID Pedido</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Repartidor</th>
+            <th>Acción</th>
+        </tr>
 
-        ID Repartidor:
-        <input type="number" name="repartidorId">
-        <br><br>
+        <%
+        for(Pedido p : pedidos)
+        {
+        %>
 
-        <input type="submit" value="Asignar">
+        <tr>
+            <td><%= p.getId() %></td>
+            <td><%= p.getDescripcion() %></td>
+            <td><%= p.getEstado() %></td>
 
-    </form>
-    
+            <form action="AsignarServlet" method="POST">
+
+                <td>
+                    <input type="hidden" name="pedidoId" value="<%= p.getId() %>">
+
+                    <select name="repartidorId">
+                        <option value="0">-- Seleccionar --</option>
+
+                        <%
+                        for(Usuario u : usuarios)
+                        {
+                            if(u.getRol().equals("Repartidor"))
+                            {
+                        %>
+                            <option value="<%= u.getId() %>">
+                                <%= u.getNombre() %>
+                            </option>
+                        <%
+                            }
+                        }
+                        %>
+
+                    </select>
+                </td>
+
+                <td>
+                    <input type="submit" value="Asignar">
+                </td>
+
+            </form>
+        </tr>
+
+        <%
+        }
+        %>
+
+    </table>
+
     <br><br>
 
     <a href="admin.jsp">

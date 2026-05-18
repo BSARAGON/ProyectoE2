@@ -81,6 +81,48 @@ public class PedidoDAO
         return lista;
     }
     
+    public ArrayList<Pedido> listarPorCliente(int clienteId)
+    {
+        ArrayList<Pedido> lista = new ArrayList<>();
+
+        try
+        {
+            Connection con = Conexion.getConexion();
+
+            String sql = "SELECT * FROM pedidos WHERE cliente_id=?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, clienteId);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next())
+            {
+                Pedido p = new Pedido();
+
+                p.setId(rs.getInt("id"));
+                p.setClienteId(rs.getInt("cliente_id"));
+                p.setDescripcion(rs.getString("descripcion"));
+                p.setPrioridad(rs.getString("prioridad"));
+                p.setEstado(rs.getString("estado"));
+                p.setRepartidorId(rs.getInt("repartidor_id"));
+
+                lista.add(p);
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+    
     public void asignarRepartidor(int pedidoId, int repartidorId)
     {
         try {

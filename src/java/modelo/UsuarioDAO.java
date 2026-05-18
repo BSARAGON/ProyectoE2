@@ -68,7 +68,7 @@ public class UsuarioDAO {
             
             Connection con = Conexion.getConexion();
 
-            String sql =  "SELECT * FROM usuarios WHERE correo=? AND password=?";
+            String sql = "SELECT * FROM usuarios WHERE LOWER(TRIM(correo)) = LOWER(TRIM(?)) AND TRIM(password) = TRIM(?)";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -96,6 +96,10 @@ public class UsuarioDAO {
                     tablaUsuarios.insertar(id, u);
                 } 
             }
+            
+            rs.close();
+            ps.close();
+            con.close();
 
         } catch (Exception e) 
         {

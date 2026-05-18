@@ -19,7 +19,7 @@ if(usuario == null)
 }
 
 PedidoDAO dao = new PedidoDAO();
-ArrayList<Pedido> lista = dao.listarPedidos();
+ArrayList<Pedido> lista = dao.listarPorCliente(usuario.getId());
 %>
 
 <!DOCTYPE html>
