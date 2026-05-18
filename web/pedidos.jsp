@@ -34,7 +34,7 @@ ArrayList<Pedido> lista = dao.listarPedidos();
         
         <table border="1">  
             <tr>
-                <th>ID</th
+                <th>ID</th>
                 <th>Cliente</th>
                 <th>Descripcion</th>
                 <th>Prioridad</th>

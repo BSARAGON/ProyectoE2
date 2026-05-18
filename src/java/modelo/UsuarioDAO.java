@@ -23,7 +23,7 @@ public class UsuarioDAO {
         try {
             
             Connection con = Conexion.getConexion();
-            PreparedStatement ps = con.prepareStatement(sql, new String[]{"id"});
+            PreparedStatement ps = con.prepareStatement(sql, new String[]{"ID"});
 
             ps.setString(1, u.getNombre());
             ps.setString(2, u.getCorreo());
@@ -68,7 +68,7 @@ public class UsuarioDAO {
         {
             Connection con = Conexion.getConexion();
 
-            String sql = "SELECT * FROM usuarios WHERE correo = ? AND password = ?";
+            String sql = "SELECT * FROM USUARIOS WHERE CORREO = ? AND PASSWORD = ?";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -81,11 +81,11 @@ public class UsuarioDAO {
             {
                 u = new Usuario();
 
-                u.setId(rs.getInt("id"));
-                u.setNombre(rs.getString("nombre"));
-                u.setCorreo(rs.getString("correo"));
-                u.setPassword(rs.getString("password"));
-                u.setRol(rs.getString("rol"));
+                u.setId(rs.getInt("ID"));
+                u.setNombre(rs.getString("NOMBRE"));
+                u.setCorreo(rs.getString("CORREO"));
+                u.setPassword(rs.getString("PASSWORD"));
+                u.setRol(rs.getString("ROL"));
 
                 // opcional: guardar en estructuras
                 tablaUsuarios.insertar(u.getId(), u);
@@ -112,7 +112,7 @@ public class UsuarioDAO {
             
             Connection con = Conexion.getConexion();
             
-            String sql = "SELECT * FROM usuarios";
+            String sql = "SELECT * FROM USUARIOS";
             
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -122,10 +122,10 @@ public class UsuarioDAO {
             {
                 Usuario u = new Usuario();
                 
-                u.setId(rs.getInt("id"));
-                u.setNombre(rs.getString("nombre"));
-                u.setCorreo(rs.getString("correo"));
-                u.setRol(rs.getString("rol"));
+                u.setId(rs.getInt("ID"));
+                u.setNombre(rs.getString("NOMBRE"));
+                u.setCorreo(rs.getString("CORREO"));
+                u.setRol(rs.getString("ROL"));
                 
                 lista.add(u);
             }
@@ -148,7 +148,7 @@ public class UsuarioDAO {
             
             Connection con = Conexion.getConexion();
             
-            String sql = "DELETE FROM usuarios WHERE id=?";
+            String sql = "DELETE FROM USUARIOS WHERE ID=?";
             
             PreparedStatement ps = con.prepareStatement(sql);
             
